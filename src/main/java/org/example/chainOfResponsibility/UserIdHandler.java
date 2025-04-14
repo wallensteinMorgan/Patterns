@@ -3,7 +3,9 @@ package org.example.chainOfResponsibility;
 public class UserIdHandler implements PinHandler{
     @Override
     public void setNext(PinHandler handler) {
-        // Last next method
+        if (handler != null) {
+            throw new UnsupportedOperationException("UserIdHandler is the last handler in the chain and cannot have a next handler.");
+        }
     }
     @Override
     public String findPin(String cmsId, String cif, String id) {
